@@ -1,5 +1,5 @@
-import { Box, Heading } from '@chakra-ui/react';
-import type { MetaFunction } from 'remix';
+import { Box, Heading, Text } from '@chakra-ui/react';
+import { type MetaFunction } from '@remix-run/node';
 
 // https://remix.run/api/conventions#meta
 export const meta: MetaFunction = () => {
@@ -17,7 +17,7 @@ export function CatchBoundary() {
   );
 }
 
-export function ErrorBoundary({ error }) {
+export function ErrorBoundary({ error }: any) {
   return (
     <Box bg="red.400" px={4} py={2}>
       <Heading as="h3" size="lg" color="white">

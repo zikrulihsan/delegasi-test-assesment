@@ -1,4 +1,5 @@
 import React from 'react';
+import { type MetaFunction } from '@remix-run/node';
 import {
   Links,
   LiveReload,
@@ -7,8 +8,7 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
-} from 'remix';
-import type { MetaFunction } from 'remix';
+} from '@remix-run/react';
 import { VStack, Heading, ChakraProvider, Text } from '@chakra-ui/react';
 import { withEmotionCache } from '@emotion/react';
 
@@ -108,7 +108,10 @@ const Document = withEmotionCache(
       <html lang="en">
         <head>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,user-scalable=no"
+          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstaticom" />
           <link
