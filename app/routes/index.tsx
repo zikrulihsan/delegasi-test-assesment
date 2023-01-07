@@ -20,10 +20,25 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import DashboardContainer from '~/container/dashboard';
+import DashboardContainer from '~/container/dashboard/DashboardContainer';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { LABA_RUGI_URL } from '~/constant';
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+
+  const getData = async () => {
+    await axios.get(LABA_RUGI_URL)
+          .then(res => {
+            console.log(res.data.details)
+          })
+  }
 
   return (
     <Box
@@ -31,25 +46,28 @@ export default function WithSubnavigation() {
       alignItems="center"
       justifyContent="center"
       width="full"
-      background="gray.100"
+      background="gray.200"
     >
       <Box
         minWidth="375px"
         width={{ base: '100%', md: '380px' }}
-        height="100vh"
         borderColor="gray.200"
         minHeight="200px"
         position="relative"
         bg="white"
       >
-        <Box>
+        <Stack
+          spacing={14}
+        >
           <Flex
             bg={useColorModeValue('white', 'gray.800')}
             color={useColorModeValue('gray.600', 'white')}
             minH={'60px'}
             py={{ base: 2 }}
+            position="fixed"
             px={{ base: 4 }}
             borderBottom={1}
+            width={{ base: '100%', md: '380px' }}
             borderStyle={'solid'}
             borderColor={useColorModeValue('gray.200', 'gray.900')}
             align={'center'}
@@ -94,7 +112,7 @@ export default function WithSubnavigation() {
             <MobileNav />
           </Collapse>
           <DashboardContainer />
-        </Box>
+        </Stack>
       </Box>
     </Box>
   );
