@@ -3,54 +3,7 @@ import { Box, Flex, IconButton, Link, Text, useBoolean } from '@chakra-ui/react'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CustomAppBar from '~/component/CustomAppBar';
-import { LABA_RUGI_URL, NERACA_URL } from '~/constant';
-
-interface IData {
-  label: string
-  details: Array<IDetailData>
-  value: number
-}
-
-interface IDetailData  {
-  label: string
-  children?: Array<IDetailData>
-  details?: Array<IDetailData>
-  value: number
-}
-
-interface IChildrenData {
-  label: string
-  details: Array<IData>
-  value: number
-}
-
-const InitialData: Array<IData> = [
-  {
-    label: "",
-    details: [
-      {
-        label: "",
-        children: [
-          {
-            label: "",
-            details: [
-              {
-                label: "",
-                details: [
-                  
-                ],
-                value: 0
-              }
-            ],
-            value: 0
-          }
-        ],
-        value: 0
-      }
-    ],
-    value: 0
-  }
-]
+import { InitialData, LABA_RUGI_URL, NERACA_URL } from '~/constant';
 
 export default function DashboardContainer() {
 
@@ -82,6 +35,7 @@ export default function DashboardContainer() {
       backgroundColor="gray.100"
       textAlign="center"
       width="100%"
+      pb='100'
     >
       <CustomAppBar/>
       <Box 

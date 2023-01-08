@@ -21,12 +21,15 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 import DashboardContainer from '~/container/dashboard/DashboardContainer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { LABA_RUGI_URL } from '~/constant';
+import { InitialData, LABA_RUGI_URL, NERACA_URL } from '~/constant';
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+  
+  const [dataLabaRugi, setDataLabaRugi] = useState(InitialData)
+  const [dataNeraca, setDataNeraca] = useState(InitialData)
 
   useEffect(() => {
     getData();
@@ -36,7 +39,11 @@ export default function WithSubnavigation() {
   const getData = async () => {
     await axios.get(LABA_RUGI_URL)
           .then(res => {
-            console.log(res.data.details)
+            setDataLabaRugi(res.data.details)
+          })
+    await axios.get(NERACA_URL)
+          .then(res => {
+            setDataNeraca(res.data.details)
           })
   }
 
@@ -111,7 +118,8 @@ export default function WithSubnavigation() {
           <Collapse in={isOpen} animateOpacity>
             <MobileNav />
           </Collapse>
-          <DashboardContainer />
+          {dataLabaRugi.length == 1 || dataNeraca.length == 1 ? <Text align="center">Loading...</Text> : <DashboardContainer dataLabaRugi={dataLabaRugi} dataNeraca={dataNeraca}/>}
+          
         </Stack>
       </Box>
     </Box>
