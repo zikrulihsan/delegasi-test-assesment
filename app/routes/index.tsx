@@ -118,7 +118,7 @@ export default function WithSubnavigation() {
           <Collapse in={isOpen} animateOpacity>
             <MobileNav />
           </Collapse>
-          {dataLabaRugi.length == 1 || dataNeraca.length == 1 ? <Text align="center">Loading...</Text> : <DashboardContainer dataLabaRugi={dataLabaRugi} dataNeraca={dataNeraca}/>}
+          {dataLabaRugi.length == 1 || dataNeraca.length == 1 ? <Text height="100vh" align="center">Loading...</Text> : <DashboardContainer dataLabaRugi={dataLabaRugi} dataNeraca={dataNeraca}/>}
           
         </Stack>
       </Box>

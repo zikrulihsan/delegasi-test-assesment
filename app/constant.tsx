@@ -12,6 +12,7 @@ export interface IData {
     label: string
     details: Array<IDetailData>
     value: number
+    month?: string
 }
   
 interface IDetailData  {
@@ -19,6 +20,7 @@ interface IDetailData  {
     children?: Array<IDetailData>
     details?: Array<IDetailData>
     value: number
+    month?: string 
 }
 
 interface IChildrenData {
@@ -30,9 +32,11 @@ interface IChildrenData {
 export const InitialData: Array<IData> = [
 {
     label: "",
+    month: "",
     details: [
     {
         label: "",
+        month: "",
         children: [
         {
             label: "",

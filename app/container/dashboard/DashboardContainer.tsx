@@ -43,9 +43,10 @@ export default function DashboardContainer(props: any) {
       <Text align="center" mt="4">
         <b>LAPORAN KEUANGAN</b>
       </Text>
+      {props.dataLabaRugi.length == 1 ? <></> :
       <Text fontSize="s" textColor="grey" mb='2'>
-        Periode Januari 2023
-      </Text>
+        {`Periode ${new Date(`${props.dataLabaRugi[0].month}`).toLocaleString('id-ID',{month:'long', year:'numeric'})}`}
+      </Text>}
 
       <CustomCard dashboardType={DASHBOARD_TYPE_PROFIT} dataLabaRugi={props.dataLabaRugi}/>
       <CustomCard dashboardType={DASHBOARD_TYPE_COST_OPERATION} dataLabaRugi={props.dataLabaRugi}/>

@@ -37,6 +37,14 @@ export default function DashboardContainer() {
       width="100%"
       pb='100'
     >
+      <Box
+        minWidth="375px"
+        width={{ base: '100%', md: '380px' }}
+        borderColor="gray.200"
+        minHeight="200px"
+        position="relative"
+        bg="white"
+      >
       <CustomAppBar/>
       <Box 
         pos="fixed"
@@ -57,7 +65,7 @@ export default function DashboardContainer() {
       </Text>
       
       <Text fontSize="s" textColor="grey" mb='2'>
-        Periode Januari 2023
+        {dataNeraca.length == 1 ? "" :`Periode ${new Date(`${dataNeraca[0].month}`).toLocaleString('id-ID',{month:'long', year:'numeric'})}`}
       </Text>
       <Flex justifyContent="center" mb="4" borderWidth="1" dropShadow="lg" textColor="grey.100">
           <Text onClick={setIsProfit.toggle} as="button" padding="2" backgroundColor={isProfit ? "grey" : "white"} borderLeftRadius={10}>Neraca</Text>
@@ -145,5 +153,6 @@ export default function DashboardContainer() {
         </Flex>
         )}    
       </Box>)}
+      </Box>
     </Flex>) 
 }
