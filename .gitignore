@@ -5,3 +5,5 @@ node_modules
 /public/build
 .env
 /api/index.js
+# Local Netlify folder
+.netlify
